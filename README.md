@@ -78,16 +78,11 @@ dotnet ef database update
 
 ---
 
-## 📸 Screenshots
-> *(You can upload and link your screenshots here)*
-
----
-
 ## 👤 Author
 
 **Kacper Sopata**  
 .NET Developer (Junior)  
-🔗 [GitHub](https://github.com/KacperSopata) • [LinkedIn](https://linkedin.com/in/KacperSopata)
+🔗 [GitHub](https://github.com/KacperSopata) • [LinkedIn](https://www.linkedin.com/in/kacper-sopata-61b505310/)
 
 ---
 
