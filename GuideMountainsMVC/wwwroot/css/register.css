@@ -1,0 +1,100 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('/images/999.jpeg'); /* Ustawienie tła jako obraz */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    padding: 4rem;
+    width: 90%;
+    max-width: 700px;
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #000;
+}
+
+.display-4 {
+    font-size: 7rem;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Cień tekstu */
+}
+
+.form-floating .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.btn-black {
+    border-radius: 5px;
+    background-color: #000;
+    color: white;
+    border: 1px solid #000;
+    width: 100%;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    padding: 15px;
+}
+
+.text-black {
+    color: #000;
+}
+
+a.text-black {
+    color: #000;
+    font-size: 2.5rem;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.form-label {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    transition: opacity 0.2s ease; /* Użyj opacity zamiast transformacji */
+    color: #aaa;
+    opacity: 1; /* Domyślnie widoczna */
+}
+
+.form-floating .form-control:focus ~ .form-label,
+.form-floating .form-control:not(:placeholder-shown) ~ .form-label {
+    opacity: 0; /* Ustaw opacity na 0, aby zniknęła */
+    pointer-events: none; /* Zapobiega interakcji z etykietą */
+}
+
+.form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.form-control {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+}
+
+.form-floating .form-label {
+    font-size: 1.5rem;
+}

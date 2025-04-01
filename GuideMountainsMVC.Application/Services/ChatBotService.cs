@@ -51,8 +51,9 @@ namespace GuideMountainsMVC.Application.Services
             var jsonResponse = await response.Content.ReadFromJsonAsync<ChatCompletionResponse>();
             if (jsonResponse == null || jsonResponse.Choices == null || jsonResponse.Choices.Count == 0)
             {
-                return $"Błąd: API zwróciło pustą odpowiedź - {responseContent}";
+                return "Brak odpowiedzi";
             }
+
 
             var answer = jsonResponse.Choices.FirstOrDefault()?.Message?.Content?.Trim();
             return string.IsNullOrWhiteSpace(answer) ? $"Brak odpowiedzi - {responseContent}" : answer;

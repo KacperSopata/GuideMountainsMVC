@@ -15,7 +15,9 @@ namespace GuideMountainsMVC.Domain.Model
         public MountainPlace MountainPlace { get; set; }
         public int CountryId { get; set; } // Zmieniono nazwę
         public Country Country { get; set; }
+        public int SkiPassTypeId { get; set; }  // Klucz obcy do SkiPassType
+        public SkiPassType SkiPassType { get; set; }
+        public double BasePrice  { get; set; } // 💰 Dodaj to
     }
-
-
 }
+

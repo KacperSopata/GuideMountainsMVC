@@ -16,6 +16,7 @@ namespace GuideMountainsMVC.Domain.Interfaces
         void UpdateAccommodation(Accommodation accommodation);
         Accommodation GetAccommodationById(int id);
         IEnumerable<Accommodation> GetByCountryId(int countryId);
+        IEnumerable<Accommodation> GetAccommodationsByMountainPlaceId(int mountainPlaceId);
 
     }
 }

@@ -48,6 +48,9 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("PricePerNight")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
@@ -55,6 +58,56 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                     b.HasIndex("MountainPlaceId");
 
                     b.ToTable("Accommodations");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.AccommodationReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccommodationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccommodationId");
+
+                    b.HasIndex("ReservationId");
+
+                    b.ToTable("AccommodationReservations");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.CategoryEquipmentRental", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryEquipmentRentals");
                 });
 
             modelBuilder.Entity("GuideMountainsMVC.Domain.Model.Country", b =>
@@ -65,6 +118,9 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -74,13 +130,16 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.MountainPlace", b =>
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.EquipmentRental", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryEquipmentRentalId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
@@ -89,18 +148,32 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("MountainPlaceId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("PricePerDay")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryEquipmentRentalId");
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("MountainPlaces");
+                    b.HasIndex("MountainPlaceId");
+
+                    b.ToTable("EquipmentRentals");
                 });
 
-            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.SkiPass", b =>
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.MountainPlace", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,7 +192,139 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("MountainPlaces");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MountainPlaceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.ReservationItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("AccommodationEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("AccommodationGuests")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AccommodationId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AccommodationNights")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("AccommodationStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EquipmentDays")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EquipmentName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EquipmentQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EquipmentRentalId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SkiPassDays")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SkiPassId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SkiPassQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SkiPassTypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccommodationId");
+
+                    b.HasIndex("EquipmentRentalId");
+
+                    b.HasIndex("ReservationId");
+
+                    b.HasIndex("SkiPassId");
+
+                    b.ToTable("ReservationItems");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.SkiPass", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("BasePrice")
+                        .HasColumnType("float");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<int>("MountainPlaceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkiPassTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -128,7 +333,43 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
 
                     b.HasIndex("MountainPlaceId");
 
+                    b.HasIndex("SkiPassTypeId");
+
                     b.ToTable("SkiPasses");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.SkiPassType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PriceMultiplier")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SkiPassTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Normalny",
+                            PriceMultiplier = 1.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ulgowy",
+                            PriceMultiplier = 0.80000000000000004
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -195,6 +436,11 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -246,6 +492,10 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator().HasValue("IdentityUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -333,6 +583,21 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
             modelBuilder.Entity("GuideMountainsMVC.Domain.Model.Accommodation", b =>
                 {
                     b.HasOne("GuideMountainsMVC.Domain.Model.Country", "Country")
@@ -352,6 +617,50 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                     b.Navigation("MountainPlace");
                 });
 
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.AccommodationReservation", b =>
+                {
+                    b.HasOne("GuideMountainsMVC.Domain.Model.Accommodation", "Accommodation")
+                        .WithMany()
+                        .HasForeignKey("AccommodationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("GuideMountainsMVC.Domain.Model.Reservation", null)
+                        .WithMany("AccommodationReservations")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Accommodation");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.EquipmentRental", b =>
+                {
+                    b.HasOne("GuideMountainsMVC.Domain.Model.CategoryEquipmentRental", "CategoryEquipmentRental")
+                        .WithMany("EquipmentRentals")
+                        .HasForeignKey("CategoryEquipmentRentalId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("GuideMountainsMVC.Domain.Model.Country", "Country")
+                        .WithMany("EquipmentRentals")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("GuideMountainsMVC.Domain.Model.MountainPlace", "MountainPlace")
+                        .WithMany("EquipmentRentals")
+                        .HasForeignKey("MountainPlaceId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("CategoryEquipmentRental");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("MountainPlace");
+                });
+
             modelBuilder.Entity("GuideMountainsMVC.Domain.Model.MountainPlace", b =>
                 {
                     b.HasOne("GuideMountainsMVC.Domain.Model.Country", "Country")
@@ -361,6 +670,47 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.Reservation", b =>
+                {
+                    b.HasOne("GuideMountainsMVC.Domain.Model.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.ReservationItem", b =>
+                {
+                    b.HasOne("GuideMountainsMVC.Domain.Model.Accommodation", "Accommodation")
+                        .WithMany()
+                        .HasForeignKey("AccommodationId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("GuideMountainsMVC.Domain.Model.EquipmentRental", "EquipmentRental")
+                        .WithMany()
+                        .HasForeignKey("EquipmentRentalId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("GuideMountainsMVC.Domain.Model.Reservation", "Reservation")
+                        .WithMany("ReservationItems")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GuideMountainsMVC.Domain.Model.SkiPass", "SkiPass")
+                        .WithMany()
+                        .HasForeignKey("SkiPassId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Accommodation");
+
+                    b.Navigation("EquipmentRental");
+
+                    b.Navigation("Reservation");
+
+                    b.Navigation("SkiPass");
                 });
 
             modelBuilder.Entity("GuideMountainsMVC.Domain.Model.SkiPass", b =>
@@ -377,9 +727,17 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("GuideMountainsMVC.Domain.Model.SkiPassType", "SkiPassType")
+                        .WithMany("SkiPasses")
+                        .HasForeignKey("SkiPassTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Country");
 
                     b.Navigation("MountainPlace");
+
+                    b.Navigation("SkiPassType");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -433,9 +791,16 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.CategoryEquipmentRental", b =>
+                {
+                    b.Navigation("EquipmentRentals");
+                });
+
             modelBuilder.Entity("GuideMountainsMVC.Domain.Model.Country", b =>
                 {
                     b.Navigation("Accommodations");
+
+                    b.Navigation("EquipmentRentals");
 
                     b.Navigation("MountainPlaces");
 
@@ -446,6 +811,20 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                 {
                     b.Navigation("Accommodations");
 
+                    b.Navigation("EquipmentRentals");
+
+                    b.Navigation("SkiPasses");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.Reservation", b =>
+                {
+                    b.Navigation("AccommodationReservations");
+
+                    b.Navigation("ReservationItems");
+                });
+
+            modelBuilder.Entity("GuideMountainsMVC.Domain.Model.SkiPassType", b =>
+                {
                     b.Navigation("SkiPasses");
                 });
 #pragma warning restore 612, 618

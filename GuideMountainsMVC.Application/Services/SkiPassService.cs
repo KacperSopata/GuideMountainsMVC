@@ -8,18 +8,22 @@ using System.Linq;
 using GuideMountainsMVC.Application.ViewModel.SkiPassVm;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using GuideMountainsMVC.Application.ViewModel.AccommodationVm;
 
 namespace GuideMountainsMVC.Application.Services
 {
     public class SkiPassService : ISkiPassService
     {
         private readonly ISkiPassRepository _skiPassRepository;
+        private readonly ISkiPassTypeRepository _skiPassTypeRepository;
         private readonly IMapper _mapper;
 
-        public SkiPassService(ISkiPassRepository skiPassRepository, IMapper mapper)
+        public SkiPassService(ISkiPassRepository skiPassRepository, IMapper mapper, ISkiPassTypeRepository skiPassTypeRepository)
         {
             _skiPassRepository = skiPassRepository;
             _mapper = mapper;
+            _skiPassTypeRepository = skiPassTypeRepository;
         }
 
         public ListSkiPassVm GetAllSkiPasses(int pageSize, int currentPage, string searchString)
@@ -54,20 +58,16 @@ namespace GuideMountainsMVC.Application.Services
 
         public int AddSkiPass(NewSkiPassVm newSkiPass)
         {
-            // Mapujemy dane z NewSkiPassVm na obiekt SkiPass
             var skiPass = _mapper.Map<SkiPass>(newSkiPass);
 
             if (newSkiPass.ImageContent != null)
             {
-                skiPass.Image = newSkiPass.Image;
+                skiPass.Image = newSkiPass.Image; // ✅ Poprawnie przypisujemy tutaj!
             }
-            _skiPassRepository.AddSkiPass(skiPass);
 
-            // Zakładając, że w repozytorium po dodaniu SkiPassa zwracany jest ID, możemy to zwrócić
+            _skiPassRepository.AddSkiPass(skiPass);
             return skiPass.Id;
         }
-
-
         public void UpdateSkiPass(NewSkiPassVm updatedSkiPass)
         {
             var skiPass = _mapper.Map<SkiPass>(updatedSkiPass);
@@ -95,10 +95,43 @@ namespace GuideMountainsMVC.Application.Services
                     Id = mp.Id,
                     Description = mp.Description,
                     CountryId = mp.CountryId,
+                    Image = mp.Image,
                 }).ToList()
             };
 
             return model;
         }
+        public List<SkiPassTypeVm> GetAllSkiPassTypes()
+        {
+            var types = _skiPassRepository.GetAllSkiPassTypes();
+            return types.Select(t => new SkiPassTypeVm
+            {
+                Id = t.Id,
+                Name = t.Name
+            }).ToList();
+        }
+        public SkiPassTypeVm GetSkiPassTypeById(int id)
+        {
+            var type = _skiPassTypeRepository.GetById(id); // zakładam, że masz ten repo
+            return _mapper.Map<SkiPassTypeVm>(type);
+        }
+
+        public SkiPassVm GetSkiPassById(int id)
+        {
+            var entity = _skiPassRepository.GetSkiPassById(id);
+            return _mapper.Map<SkiPassVm>(entity);
+        }
+        public ListSkiPassVm GetSkiPassesByMountainPlaceId(int mountainPlaceId)
+        {
+            var skiPasses = _skiPassRepository.GetByMountainPlaceId(mountainPlaceId).ToList();
+
+            var model = new ListSkiPassVm
+            {
+                SkiPasses = _mapper.Map<List<SkiPassForListVm>>(skiPasses)
+            };
+
+            return model;
+        }
+
     }
 }

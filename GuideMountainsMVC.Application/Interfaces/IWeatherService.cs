@@ -10,7 +10,8 @@ namespace GuideMountainsMVC.Application.Interfaces
     public interface IWeatherService
     {
         Task<WeatherResponse> GetWeatherAsync(string city);
-        Task SaveWeatherHistoryAsync(WeatherResponse weather, string city, string userId);
-        Task<List<WeatherHistory>> GetWeatherHistoryAsync(string userId);
+        Task<WeatherFiveDayForecast> GetFiveDayForecastAsync(string city);
+
+
     }
 }

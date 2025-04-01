@@ -18,7 +18,10 @@ namespace GuideMountainsMVC.Application
             services.AddTransient<ICountryService, CountryService>();
             services.AddTransient<IMountainPlaceService, MountainPlaceService>();
             services.AddTransient<IAccommodationService, AccommodationService>();
-            //services.AddTransient<IChatBotService, ChatBotService>();
+            services.AddTransient<IEquipmentRentalService, EquipmentRentalService>();
+            services.AddTransient<IReservationService, ReservationService>();
+            services.AddTransient<ISkiPassTypeService, SkiPassTypeService>();
+            services.AddTransient<IPriceCalculatorService, PriceCalculatorService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }

@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Cards and Slider</title>
+    <link rel="stylesheet" href="/css/custom.css" asp-append-version="true">
+    <link rel="stylesheet" href="/css/chat.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+</head>
+
+<body>
+    <header>
+        <h1 class="header-title fancy-title">Choose Your Adventure Destination</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="cards">
+                <div class="card" id="card1" data-country="austria">
+                    <div class="card-content">
+                        <h2 class="title">Austria</h2>
+                        <p>Explore the best slopes, ski resorts, and winter sports destinations in Austria.</p>
+                    </div>
+                </div>
+                <div class="card" id="card2" data-country="italy">
+                    <div class="card-content">
+                        <h2 class="title">Italy</h2>
+                        <p>Discover Italy’s charming mountain resorts, fantastic ski slopes, and views!</p>
+                    </div>
+                </div>
+                <div class="card" id="card3" data-country="switzerland">
+                    <div class="card-content">
+                        <h2 class="title">Switzerland</h2>
+                        <p>Switzerland offers scenic landscapes and unforgettable ski experiences!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="slider-wrapper">
+        <button class="slider-button prev">&lt;</button>
+        <div class="slider-track">
+            <div class="slider-card" id="flag-austria" data-country="austria">
+                <img src="/Images/Flag_of_Austria.svg.png" alt="Austria Flag" class="flag">
+            </div>
+            <div class="slider-card" id="flag-italy" data-country="italy">
+                <img src="/Images/Italy.png" alt="Italy Flag" class="flag">
+            </div>
+            <div class="slider-card" id="flag-switzerland" data-country="switzerland">
+                <img src="/Images/swiss.png" alt="Switzerland Flag" class="flag">
+            </div>
+        </div>
+        <button class="slider-button next">&gt;</button>
+    </div>
+    <div id="chat-toggle">
+        <i class="bi bi-chat-dots-fill"></i>
+    </div>
+
+    <!-- Floating Chat Box -->
+    <div id="floating-chat" class="hidden">
+        <div class="chat-header">
+            AI Chat
+            <button id="chat-close"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="chat-messages" id="chat-log"></div>
+        <div class="chat-input-wrapper">
+            <input type="text" id="chat-input" placeholder="Type your message..." />
+            <button id="send-btn"><i class="bi bi-send-fill"></i></button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // -------------------------
+            // TŁO – ZMIANA W ZALEŻNOŚCI OD FLAGI
+            // -------------------------
+            const backgrounds = {
+                austria: "/Images/999.jpeg",
+                italy: "/Images/1.jpg",
+                switzerland: "/Images/888.jpeg"
+            };
+
+            const countryIds = {
+                austria: 2,
+                italy: 1,
+                switzerland: 3
+            };
+
+            const backgroundLayer = document.createElement("div");
+            backgroundLayer.style.position = "fixed";
+            backgroundLayer.style.top = "0";
+            backgroundLayer.style.left = "0";
+            backgroundLayer.style.width = "100%";
+            backgroundLayer.style.height = "100vh";
+            backgroundLayer.style.backgroundSize = "cover";
+            backgroundLayer.style.backgroundPosition = "center";
+            backgroundLayer.style.backgroundRepeat = "no-repeat";
+            backgroundLayer.style.transition = "opacity 1s ease-in-out";
+            backgroundLayer.style.opacity = "1";
+            backgroundLayer.style.zIndex = "-2";
+
+            document.body.prepend(backgroundLayer);
+
+            function changeBackground(country) {
+                backgroundLayer.style.opacity = "0";
+                setTimeout(() => {
+                    backgroundLayer.style.backgroundImage = `url('${backgrounds[country]}')`;
+                    backgroundLayer.style.opacity = "1";
+                }, 500);
+            }
+
+            function goToMountainPlace(countryKey) {
+                const id = countryIds[countryKey];
+                if (id) {
+                    window.location.href = `/MountainPlace/MountainPlacesForCountry?countryId=${id}`;
+                }
+            }
+
+            document.getElementById("flag-austria").addEventListener("click", () => changeBackground("austria"));
+            document.getElementById("flag-italy").addEventListener("click", () => changeBackground("italy"));
+            document.getElementById("flag-switzerland").addEventListener("click", () => changeBackground("switzerland"));
+
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener("click", () => {
+                    const country = card.getAttribute("data-country");
+                    goToMountainPlace(country);
+                });
+            });
+
+            // -------------------------
+            // CHATBOT – Floating Chat
+            // -------------------------
+            function appendMessage(sender, message) {
+                const bubble = $('<div class="message ' + sender + '"></div>').text(message);
+                $("#chat-log").append(bubble);
+                $("#chat-log").scrollTop($("#chat-log")[0].scrollHeight);
+            }
+
+            $("#send-btn").click(function () {
+                const msg = $("#chat-input").val();
+                if ($.trim(msg) === "") return;
+                appendMessage("user", msg);
+                $("#chat-input").val("");
+
+                $.ajax({
+                    url: '/Chat/SendMessage',
+                    type: 'POST',
+                    data: { userPrompt: msg },
+                    success: function (res) {
+                        appendMessage("bot", res.answer);
+                    },
+                    error: function () {
+                        appendMessage("bot", "⚠️ Server error.");
+                    }
+                });
+            });
+
+            $("#chat-input").keypress(function (e) {
+                if (e.which === 13) {
+                    $("#send-btn").click();
+                    return false;
+                }
+            });
+
+            $("#chat-toggle").click(function () {
+                $("#floating-chat").removeClass("hidden");
+                $(this).hide();
+            });
+
+            $("#chat-close").click(function () {
+                $("#floating-chat").addClass("hidden");
+                $("#chat-toggle").show();
+            });
+        });
+    </script>
+
+</body>
+</html>

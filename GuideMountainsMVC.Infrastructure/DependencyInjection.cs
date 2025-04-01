@@ -19,9 +19,10 @@ namespace GuideMountainsMVC.Infrastructure
             services.AddTransient<ICountryRepository, CountryRepository>();
             services.AddTransient<ISkiPassRepository, SkiPassRepository>();
             services.AddTransient<IAccommodationRepository, AccommodationRepository>();
-            
-
-
+            services.AddTransient<IEquipmentRentalRepository, EquipmentRentalRepository>();
+            services.AddTransient<IReservationRepository, ReservationRepository>();
+            services.AddTransient<ISkiPassTypeRepository, SkiPassTypeRepository>();
+            services.AddTransient<IAccommodationReservationRepository, AccommodationReservationRepository>();
             return services;
         }
     }

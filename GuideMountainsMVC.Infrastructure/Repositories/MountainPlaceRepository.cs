@@ -2,6 +2,7 @@
 using GuideMountainsMVC.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuideMountainsMVC.Infrastructure.Repositories
 {
@@ -45,13 +46,26 @@ namespace GuideMountainsMVC.Infrastructure.Repositories
         // Usuń miejsce górskie
         public void Delete(int id)
         {
-            var mountainPlace = _context.MountainPlaces.SingleOrDefault(mp => mp.Id == id);
+            var mountainPlace = _context.MountainPlaces
+                .Include(mp => mp.Accommodations)
+                .Include(mp => mp.SkiPasses)
+                .Include(mp => mp.EquipmentRentals)
+                .FirstOrDefault(mp => mp.Id == id);
+
             if (mountainPlace != null)
             {
+                // Usuń ręcznie zależne encje
+                _context.Accommodations.RemoveRange(mountainPlace.Accommodations);
+                _context.SkiPasses.RemoveRange(mountainPlace.SkiPasses);
+                _context.EquipmentRentals.RemoveRange(mountainPlace.EquipmentRentals);
+
+                // Teraz usuwamy MountainPlace
                 _context.MountainPlaces.Remove(mountainPlace);
+
                 _context.SaveChanges();
             }
         }
+
 
         // Pobierz miejsca górskie powiązane z danym krajem
         public IEnumerable<MountainPlace> GetByCountryId(int countryId)

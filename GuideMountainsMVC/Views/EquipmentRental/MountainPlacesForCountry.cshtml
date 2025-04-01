@@ -1,0 +1,36 @@
+﻿@model IEnumerable<GuideMountainsMVC.Application.ViewModel.MountainPlaceVm.MountainPlaceForListVm>
+
+@{
+    ViewData["Title"] = $"Mountain Places in {ViewBag.CountryName}";
+}
+
+<link rel="stylesheet" href="/css/zobaczymy.css" asp-append-version="true" />
+
+<div class="container py-5">
+    <h1 class="text-center mb-5 display-4">@ViewData["Title"]</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5">
+        @foreach (var place in Model)
+        {
+            var imageSrc = place.Image != null
+            ? Url.Content("~/Images/" + place.Image)
+            : Url.Content("~/Images/no-image.jpg");
+
+            <div class="col">
+                <div class="card shadow h-100 p-3" style="border-radius: 20px;">
+                    <img src="@imageSrc" class="card-img-top rounded" alt="Mountain Place Image" style="height: 250px; object-fit: cover;" />
+                    <div class="card-body text-center">
+                        <h4 class="card-title fw-bold">@place.Name</h4>
+                        <p class="card-text text-muted">@place.Description</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <a href="@Url.Action("EquipmentRentalsForMountainPlace", "EquipmentRental", new { mountainPlaceId = place.Id })"
+                           class="btn btn-secondary w-75 py-2">
+                            View Equipment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

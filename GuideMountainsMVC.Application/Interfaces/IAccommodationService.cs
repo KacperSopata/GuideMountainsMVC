@@ -1,5 +1,6 @@
 ﻿using GuideMountainsMVC.Application.ViewModel.AccommodationVm;
 using GuideMountainsMVC.Application.ViewModel.SkiPassVm;
+using GuideMountainsMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace GuideMountainsMVC.Application.Interfaces
         void UpdateAccommodation(NewAccommodationVm updatedAccommodation);
         void DeleteAccommodation(int id);
         ListAccommodationVm GetAccommodationByCountryId (int countryId);
+        ListAccommodationVm GetAccommodationsByMountainPlaceId(int mountainPlaceId);
     }
 }

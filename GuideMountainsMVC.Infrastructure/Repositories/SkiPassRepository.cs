@@ -58,5 +58,25 @@ namespace GuideMountainsMVC.Infrastructure.Repositories
         {
             return _context.SkiPasses.Where(mp => mp.CountryId == countryForeignKey);
         }
+        public IQueryable<SkiPassType> GetAllSkiPassTypes()
+        {
+            return _context.SkiPassTypes;
+        }
+        // SkiPassTypeRepository.cs
+        public SkiPassType GetById(int id)
+        {
+            return _context.SkiPassTypes.FirstOrDefault(x => x.Id == id);
+        }
+        public IEnumerable<SkiPass> GetByMountainPlaceId(int mountainPlaceId)
+        {
+            return _context.SkiPasses
+                .Include(s => s.MountainPlace)
+                .Include(s => s.Country)
+                .Include(s => s.SkiPassType) // ✅ to jest kluczowe!
+                .Where(s => s.MountainPlaceId == mountainPlaceId)
+                .ToList();
+        }
+
+
     }
 }

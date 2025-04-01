@@ -1,0 +1,21 @@
+﻿@model IEnumerable<GuideMountainsMVC.Application.ViewModel.ReservationVm.ReservationForListVm>
+
+<h2 class="mb-4">My Reservations</h2>@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        You don't have any reservations yet. Start exploring and make your first reservation!
+    </div>
+}
+else
+{
+    @foreach (var res in Model)
+    {
+        <div class="card p-3 my-2 shadow rounded">
+            <h4>Reservation in @res.MountainPlaceName</h4>
+            <p><strong>Mountain Place:</strong> @res.MountainPlaceName</p>
+            <p><strong>Created:</strong> @res.CreatedDate.ToString("yyyy-MM-dd")</p>
+            <p><strong>Status:</strong> @(res.IsConfirmed ? "✅ Confirmed" : "❌ Not confirmed")</p>
+            <a class="btn btn-primary btn-sm" href="@Url.Action("Details", "Reservation", new { id = res.Id })">View Details</a>
+        </div>
+    }
+}

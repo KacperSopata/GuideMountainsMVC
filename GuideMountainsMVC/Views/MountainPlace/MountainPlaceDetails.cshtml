@@ -1,0 +1,46 @@
+﻿@model GuideMountainsMVC.Application.ViewModel.MountainPlaceVm.MountainPlaceDetailVm
+
+@{
+    ViewData["Title"] = "Mountain Place Details";
+}
+
+<link rel="stylesheet" href="/css/zobaczymy.css" asp-append-version="true" />
+
+<div class="d-flex justify-content-center align-items-center py-5 px-3">
+    <div class="shadow bg-white rounded-4 p-4 w-100" style="max-width: 1200px;">
+        <div class="row g-4 align-items-center">
+            <!-- Image -->
+            <div class="col-lg-6">
+                @if (Model.Image != null && Model.Image.Length > 0)
+                {
+                    var imageSrc = $"data:image/jpeg;base64,{Convert.ToBase64String(Model.Image)}";
+                    <img src="@imageSrc"
+                         alt="Mountain Image"
+                         class="img-fluid rounded w-100"
+                         style="max-height: 400px; object-fit: cover;" />
+                }
+                else
+                {
+                    <div class="bg-secondary text-white d-flex justify-content-center align-items-center rounded"
+                         style="height: 400px;">
+                        <span>No Image Available</span>
+                    </div>
+                }
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">@Model.Name</h2>
+                <p class="text-muted fs-5">@Model.Description</p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <form asp-action="Delete" asp-controller="MountainPlace" method="post" class="mb-0">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="btn btn-secondary px-4 py-2">Delete</button>
+                    </form>
+
+                    <a href="/MountainPlace" class="btn btn-secondary px-4 py-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

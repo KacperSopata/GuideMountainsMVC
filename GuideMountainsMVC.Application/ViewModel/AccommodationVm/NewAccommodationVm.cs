@@ -21,6 +21,7 @@ namespace GuideMountainsMVC.Application.ViewModel.AccommodationVm
         public IFormFile ImageContent { get; set; }
         public int MountainPlaceId { get; set; } // Zmieniono z MountainPlaceId
         public int CountryId { get; set; }
+        public double PricePerNight { get; set; }
         public List<SelectListItem> Countries { get; set; } = new List<SelectListItem>(); // Inicjalizacja listy        public byte[] Image { get; set; }
         public List<SelectListItem> MountainPlaces { get; set; } = new List<SelectListItem>();
 

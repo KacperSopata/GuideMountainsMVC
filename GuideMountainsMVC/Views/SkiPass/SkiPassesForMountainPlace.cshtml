@@ -1,0 +1,61 @@
+﻿@model GuideMountainsMVC.Application.ViewModel.SkiPassVm.ListSkiPassVm
+
+@{
+	ViewData["Title"] = "Ski Passes for " + ViewBag.MountainPlaceName;
+}
+
+
+<div class="container py-5">
+	<h1 class="text-center mb-5 display-4">Ski Passes in @ViewBag.MountainPlaceName</h1>
+
+	@if (!Model.SkiPasses.Any())
+	{
+		<div class="alert text-center" style="background-color: #e2e3e5; color: #41464b;">
+			No SkiPasses available for this mountain place.
+		</div>
+
+	}
+
+	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+		@foreach (var pass in Model.SkiPasses)
+		{
+			var imageSrc = pass.Image != null && pass.Image.Length > 0
+			? $"data:image/jpeg;base64,{Convert.ToBase64String(pass.Image)}"
+			: null;
+
+			<div class="col">
+				<div class="card shadow h-100 p-3" style="border-radius: 20px;">
+					@if (!string.IsNullOrEmpty(imageSrc))
+					{
+						<img src="@imageSrc" class="card-img-top rounded" alt="Ski Pass Image" style="height: 250px; object-fit: cover;" />
+					}
+					else
+					{
+						<div class="card-img-top rounded bg-secondary d-flex align-items-center justify-content-center text-white"
+							 style="height: 250px; font-size: 1.2rem;">
+							No Image
+						</div>
+					}
+
+					<div class="card-body">
+						<h4 class="card-title fw-bold">@pass.MountainPlaceName</h4>
+						<p class="card-text text-muted">@pass.Description</p>
+					</div>
+					<div class="card-footer bg-transparent border-0">
+						<a href="@Url.Action("SkiPassDetails", "SkiPass", new { id = pass.Id })"
+						   class="btn btn-secondary w-100 py-2">
+							View Details
+						</a>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	<div class="text-center mt-5">
+		<a href="@Url.Action("AddSkiPass", "SkiPass", new { mountainPlaceId = ViewBag.MountainPlaceId })"
+		   class="btn btn-secondary btn-lg px-5 py-3">
+			Add New SkiPass
+		</a>
+	</div>
+
+</div>

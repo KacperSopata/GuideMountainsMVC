@@ -1,0 +1,49 @@
+﻿@model GuideMountainsMVC.Application.ViewModel.ReservationVm.NewReservationVm
+@using Newtonsoft.Json
+
+<main class="container py-5">
+	<h2 class="text-center mb-5 display-5">Add Items to Reservation</h2>
+
+	<form method="post" asp-action="CreateReservation">
+		<input type="hidden" name="CountryId" value="@Model.CountryId" />
+		<input type="hidden" name="MountainPlaceId" value="@Model.MountainPlaceId" />
+
+		<div class="mb-4">
+			<h4 class="mb-3">SkiPasses</h4>
+			<div id="skiPassContainer"></div>
+			<button type="button" class="btn btn-secondary mt-2" onclick="addSkiPass()">Add SkiPass</button>
+		</div>
+
+		<div class="mb-4">
+			<h4 class="mb-3">Accommodation</h4>
+			<div id="accommodationContainer"></div>
+			<button type="button" class="btn btn-secondary mt-2" onclick="addAccommodation()">Add Accommodation</button>
+		</div>
+
+		<div class="mb-4">
+			<h4 class="mb-3">Equipment</h4>
+			<div id="equipmentContainer"></div>
+			<button type="button" class="btn btn-secondary mt-2" onclick="addEquipment()">Add Equipment</button>
+		</div>
+
+		<button type="submit" class="btn btn-secondary mt-2 px-5 py-2">Create Reservation</button>
+	</form>
+</main>
+
+@section Scripts {
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"></script>
+	<script src="~/js/reservation-form.js"></script>
+
+	<script>
+		const skiPasses = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.AvailableSkiPasses))');
+		const skiPassTypes = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.AvailableSkiPassTypes))');
+		const equipmentOptions = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.AvailableEquipment))');
+		const accommodationOptions = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.AvailableAccommodations))');
+
+		window.skiPasses = skiPasses;
+		window.skiPassTypes = skiPassTypes;
+		window.equipmentOptions = equipmentOptions;
+		window.accommodationOptions = accommodationOptions;
+	</script>
+}

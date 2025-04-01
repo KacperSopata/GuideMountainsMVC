@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuideMountainsMVC", "GuideMountainsMVC\GuideMountainsMVC.csproj", "{6D14D24B-519D-43A7-A214-A678D561A117}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuideMountainsMVC.Domain", "GuideMountainsMVC.Domain\GuideMountainsMVC.Domain.csproj", "{0392A0BE-36BA-4F79-AA98-3D64E445A0C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuideMountainsMVC.Application", "GuideMountainsMVC.Application\GuideMountainsMVC.Application.csproj", "{980A80D4-E354-4837-AECE-DBB6587FA905}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuideMountainsMVC.Test", "GuideMountainsMVC.Test\GuideMountainsMVC.Test.csproj", "{2EA1FE07-E5B6-47A9-BC0A-6E134A8F6D96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{980A80D4-E354-4837-AECE-DBB6587FA905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{980A80D4-E354-4837-AECE-DBB6587FA905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{980A80D4-E354-4837-AECE-DBB6587FA905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA1FE07-E5B6-47A9-BC0A-6E134A8F6D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA1FE07-E5B6-47A9-BC0A-6E134A8F6D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA1FE07-E5B6-47A9-BC0A-6E134A8F6D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA1FE07-E5B6-47A9-BC0A-6E134A8F6D96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +58,6 @@ Global
 		{0978BA40-569F-4E4B-852A-0B1A6B97DD79} = {1303F51D-5678-4B4C-B725-A154F416F1D8}
 		{0392A0BE-36BA-4F79-AA98-3D64E445A0C3} = {DAC506AE-E36E-4051-A8B3-51C71B9C565B}
 		{980A80D4-E354-4837-AECE-DBB6587FA905} = {8F1528C8-ADBD-4F19-83A7-5590CEA36CA5}
+		{2EA1FE07-E5B6-47A9-BC0A-6E134A8F6D96} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 EndGlobal

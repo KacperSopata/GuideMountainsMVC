@@ -49,12 +49,19 @@ namespace GuideMountainsMVC.Infrastructure.Repositories
         public Accommodation GetAccommodationById(int id)
         {
             return _context.Accommodations
-                           .Include(a => a.MountainPlace) // Przykład, jeśli potrzebujesz powiązane obiekty
+                           .Include(a => a.MountainPlace)
+                            .Include(a => a.Country)// Przykład, jeśli potrzebujesz powiązane obiekty
                            .FirstOrDefault(a => a.Id == id);
         }
         public IEnumerable<Accommodation> GetByCountryId(int countryId)
         {
             return _context.Accommodations.Where(mp => mp.CountryId == countryId);
+        }
+        public IEnumerable<Accommodation> GetAccommodationsByMountainPlaceId(int mountainPlaceId)
+        {
+            return _context.Accommodations
+                           .Where(a => a.MountainPlaceId == mountainPlaceId)
+                           .ToList();
         }
     }
 }

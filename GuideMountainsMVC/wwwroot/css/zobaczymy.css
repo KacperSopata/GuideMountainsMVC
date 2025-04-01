@@ -1,0 +1,200 @@
+﻿@ {
+    ViewData ["Title"] = "Chat";
+}
+
+<style >
+/* 🌄 Tło i font */
+body {
+    background: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🏞️ Chat Container */
+#chat-container {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+}
+
+    #chat-container h2 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+/* 📝 Chat log */
+#chat-log {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* 💬 Styl wiadomości */
+.message {
+    margin-bottom: 15px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+    .message.user {
+        background-color: #007bff;
+        color: #fff;
+        text-align: right;
+        border-top-right-radius: 0;
+    }
+
+    .message.bot {
+        background-color: #f0f0f0;
+        color: #333;
+        text-align: left;
+        border-top-left-radius: 0;
+    }
+
+/* 🖋️ Input */
+#chat-input {
+    width: calc(100% - 100px);
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    margin-right: 10px;
+    background-color: #fff;
+}
+
+/* 💡 Button */
+#send-btn {
+    width: 80px;
+    padding: 12px 18px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+    #send-btn:hover {
+        background-color: #0056b3;
+    }
+
+    #send-btn:active {
+        background-color: #004085;
+        box-shadow: none;
+    }
+
+/* 🃏 Karty */
+.card {
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+    }
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* ✅ Jednolite przyciski - szare */
+.btn {
+    border-radius: 10px;
+    font-weight: 500;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+    .btn:hover,
+    .btn:focus {
+        background-color: #5a6268;
+        color: white;
+    }
+
+</style >
+
+<div id="chat-container" >
+<h2 > @ViewData["Title"]</h2 >
+<div id="chat-log" >
+<!-- Messages will be added here dynamically -->
+</div >
+<div >
+<input type="text" id="chat-input" placeholder="Type a message..." / >
+<button id="send-btn" > Send</button >
+</div >
+</div >
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <script> $(function () {
+            function appendMessage(sender, message) {
+                var messageDiv = $('<div class="message ' + sender + '"></div>');
+                messageDiv.text(message);
+                $("#chat-log").append(messageDiv);
+                $("#chat-log").scrollTop($("#chat-log")[0].scrollHeight);
+            }
+
+            $("#send-btn").click(function () {
+                var userMessage = $("#chat-input").val();
+                if ($.trim(userMessage) === "") return;
+                appendMessage("user", "You: " + userMessage);
+                $("#chat-input").val("");
+
+                $.ajax({
+                    url: '@Url.Action("SendMessage", "Chat")',
+                    type: 'POST',
+                    data: { userPrompt: userMessage },
+                    success: function (result) {
+                        var botMessage = result.answer;
+                        appendMessage("bot", "Bot: " + botMessage);
+                    },
+                    error: function () {
+                        appendMessage("bot", "An error occurred during communication with the server.");
+                    }
+                });
+            });
+
+            // Optionally: Send message on pressing Enter
+            $("#chat-input").keypress(function (e) {
+                if (e.which === 13) {
+                    $("#send-btn").click();
+                    return false;
+                }
+            });
+        });
+    </script>
+}

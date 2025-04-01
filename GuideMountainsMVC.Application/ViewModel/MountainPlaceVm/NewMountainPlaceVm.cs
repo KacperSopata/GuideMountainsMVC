@@ -20,13 +20,18 @@ namespace GuideMountainsMVC.Application.ViewModel.MountainPlaceVm
         public int CountryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<SelectListItem> Countries { get; set; } = new List<SelectListItem>(); // Inicjalizacja listy        public byte[] Image { get; set; }
+        public byte[] Image { get; set; }
+
+        public IFormFile ImageContent { get; set; }  // 🟢 NIE dodawaj [Required] ani [BindRequired]
+
+        public List<SelectListItem> Countries { get; set; } = new List<SelectListItem>();
+
         public void ConfigureMapping(Profile profile)
         {
             profile.CreateMap<MountainPlace, NewMountainPlaceVm>();
-            profile.CreateMap<NewMountainPlaceVm, MountainPlace>();
+            profile.CreateMap<NewMountainPlaceVm, MountainPlace>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore()); // ważne
             profile.CreateMap<MountainPlace, MountainPlaceForListVm>();
         }
-       
     }
 }

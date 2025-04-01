@@ -1,0 +1,54 @@
+﻿@model GuideMountainsMVC.Application.ViewModel.AccommodationVm.ListAccommodationVm
+
+@{
+    ViewData["Title"] = "Accommodations in " + ViewBag.MountainPlaceName;
+}
+
+<link rel="stylesheet" href="/css/zobaczymy.css" asp-append-version="true" />
+
+<div class="container py-5">
+    <h1 class="text-center mb-5 display-4">Accommodations in @ViewBag.MountainPlaceName</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+        @foreach (var acc in Model.Accommodations)
+        {
+            var imageSrc = acc.Image != null && acc.Image.Length > 0
+                ? $"data:image/jpeg;base64,{Convert.ToBase64String(acc.Image)}"
+                : null;
+
+                <div class="col">
+                    <div class="card shadow h-100 p-3" style="border-radius: 20px;">
+                    @if (!string.IsNullOrEmpty(imageSrc))
+                    {
+                                <img src="@imageSrc" class="card-img-top rounded" alt="Accommodation Image" style="height: 250px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                                <div class="card-img-top rounded bg-secondary d-flex align-items-center justify-content-center text-white"
+                                     style="height: 250px; font-size: 1.2rem;">
+                                    No Image
+                                </div>
+                    }
+
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">@acc.Name</h4>
+                            <p class="card-text text-muted">@acc.Description</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <a href="@Url.Action("AccommodationDetails", "Accommodation", new { id = acc.Id })"
+                               class="btn btn-secondary w-100 py-2">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        }
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="@Url.Action("AddAccommodation", "Accommodation", new { mountainPlaceId = ViewBag.MountainPlaceId })"
+           class="btn btn-secondary btn-lg px-5 py-3">
+            Add New Accommodation
+        </a>
+    </div>
+</div>

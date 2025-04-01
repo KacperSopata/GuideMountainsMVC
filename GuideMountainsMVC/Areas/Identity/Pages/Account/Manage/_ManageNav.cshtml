@@ -1,0 +1,28 @@
+@using GuideMountainsMVC.Domain.Model
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="d-flex flex-column gap-2">
+    <a class="btn @(ManageNavPages.IndexNavClass(ViewContext) == "active" ? "btn-primary" : "btn-secondary")"
+       asp-page="./Index" id="profile">Profile</a>
+
+    @* <a class="btn @(ManageNavPages.EmailNavClass(ViewContext) == "active" ? "btn-primary" : "btn-secondary")" 
+           asp-page="./Email" id="email">Email</a> *@
+
+    <a class="btn @(ManageNavPages.ChangePasswordNavClass(ViewContext) == "active" ? "btn-primary" : "btn-secondary")"
+       asp-page="./ChangePassword" id="change-password">Password</a>
+
+    @* @if (hasExternalLogins)
+    {
+        <a class="btn @(ManageNavPages.ExternalLoginsNavClass(ViewContext) == "active" ? "btn-primary" : "btn-secondary")" 
+           asp-page="./ExternalLogins" id="external-login">External logins</a>
+    } *@
+
+    @* <a class="btn @(ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) == "active" ? "btn-primary" : "btn-secondary")" 
+           asp-page="./TwoFactorAuthentication" id="two-factor">Two-factor authentication</a> *@
+
+    <a class="btn @(ManageNavPages.PersonalDataNavClass(ViewContext) == "active" ? "btn-primary" : "btn-secondary")"
+       asp-page="./PersonalData" id="personal-data">Delete Account</a>
+</div>

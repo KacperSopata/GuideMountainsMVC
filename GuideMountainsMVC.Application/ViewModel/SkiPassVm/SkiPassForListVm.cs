@@ -17,12 +17,15 @@ namespace GuideMountainsMVC.Application.ViewModel.SkiPassVm
         public byte[] Image { get; set; }
         public string MountainPlaceName { get; set; }
         public string CountryName { get; set; }
+        public string SkiPassTypeName { get; set; } // Nowe pole
 
         public void ConfigureMapping(Profile profile)
         {
             profile.CreateMap<SkiPass, SkiPassForListVm>()
                 .ForMember(dest => dest.MountainPlaceName, opt => opt.MapFrom(src => src.MountainPlace.Name))
-                .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name));
+                .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name))
+                .ForMember(dest => dest.SkiPassTypeName, opt => opt.MapFrom(src => src.SkiPassType.Name))
+                .ForMember(dest => dest.SkiPassTypeName, opt => opt.MapFrom(src => src.SkiPassType.Name));
         }
     }
 }

@@ -53,6 +53,7 @@ namespace GuideMountainsMVC.Application.Services
                     Name = mp.Name,
                     Description = mp.Description,
                     CountryId = mp.CountryId,
+                    Image = mp.Image,
 
                 }).ToList(),
                 Count = placesQuery.Count(),
@@ -76,6 +77,7 @@ namespace GuideMountainsMVC.Application.Services
                     Name = mountainPlace.Name,
                     Description = mountainPlace.Description,
                     CountryId = mountainPlace.CountryId,
+                    Image = mountainPlace.Image,
                 };
             }
 
@@ -94,6 +96,7 @@ namespace GuideMountainsMVC.Application.Services
                     Name = mountainPlace.Name,
                     Description = mountainPlace.Description,
                     CountryId = mountainPlace.CountryId,
+                    Image = mountainPlace.Image,
                 };
             }
 
@@ -103,14 +106,18 @@ namespace GuideMountainsMVC.Application.Services
         // Dodaj nowe miejsce górskie
         public int AddMountainPlace(NewMountainPlaceVm model)
         {
-            // Mapowanie ViewModel do modelu domenowego
             var mountainPlace = _mapper.Map<MountainPlace>(model);
 
-            // Jeśli jest zdjęcie, zapisujemy go jako tablicę bajtów
-          
-            // Dodajemy do bazy danych poprzez repository
+            if (model.ImageContent != null)
+            {
+                mountainPlace.Image = model.Image;
+            }
+
             return _mountainPlaceRepository.Add(mountainPlace);
         }
+
+
+
 
         // Aktualizuj miejsce górskie
         public void UpdateMountainPlace(NewMountainPlaceVm model)
@@ -121,6 +128,7 @@ namespace GuideMountainsMVC.Application.Services
                 mountainPlace.Name = model.Name;
                 mountainPlace.Description = model.Description;
                 mountainPlace.CountryId = model.CountryId;
+                mountainPlace.Image = model.Image;
 
                 _mountainPlaceRepository.Update(mountainPlace);  // Aktualizujemy w repozytorium
             }
@@ -149,6 +157,7 @@ namespace GuideMountainsMVC.Application.Services
                     Name = mp.Name,
                     Description = mp.Description,
                     CountryId = mp.CountryId,
+                    Image = mp.Image
                 }).ToList()
             };
 
@@ -188,6 +197,7 @@ namespace GuideMountainsMVC.Application.Services
                     Name = mp.Name,
                     Description = mp.Description,
                     CountryId = mp.CountryId,
+                    Image = mp.Image
                 }).ToList()
             };
 

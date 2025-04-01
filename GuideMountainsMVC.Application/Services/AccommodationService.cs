@@ -96,5 +96,16 @@ namespace GuideMountainsMVC.Application.Services
 
             return model;
         }
+        public ListAccommodationVm GetAccommodationsByMountainPlaceId(int mountainPlaceId)
+        {
+            var accommodations = _accommodationRepository.GetAccommodationsByMountainPlaceId(mountainPlaceId);
+
+            var model = new ListAccommodationVm
+            {
+                Accommodations = _mapper.Map<List<AccommodationForListVm>>(accommodations)
+            };
+
+            return model;
+        }
     }
 }

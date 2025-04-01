@@ -18,14 +18,14 @@ namespace GuideMountainsMVC.Application.ViewModel.MountainPlaceVm
         public string CountryName { get; set; }
         public string Country { get; set; }
         public int CountryId { get; set; }
-
-
         public void ConfigureMapping(Profile profile)
         {
             profile.CreateMap<MountainPlace, MountainPlaceForListVm>()
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src =>
                     src.Description.Length > 50 ? src.Description.Substring(0, 50) + "..." : src.Description))
-                .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name));
+                .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image)); // 👈 DODAJ TO
         }
+
     }
 }

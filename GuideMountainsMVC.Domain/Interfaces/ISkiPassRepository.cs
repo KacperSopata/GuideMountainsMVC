@@ -16,5 +16,8 @@ namespace GuideMountainsMVC.Domain.Interfaces
         void UpdateSkiPass(SkiPass skiPass);
         SkiPass GetSkiPassById(int id);
         IEnumerable<SkiPass> GetByCountryId(int countryForeignKey);
+        IQueryable<SkiPassType> GetAllSkiPassTypes();
+        SkiPassType GetById(int id);
+        IEnumerable<SkiPass> GetByMountainPlaceId(int mountainPlaceId);
     }
 }

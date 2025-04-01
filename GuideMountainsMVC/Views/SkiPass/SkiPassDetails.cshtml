@@ -1,0 +1,49 @@
+﻿@model GuideMountainsMVC.Application.ViewModel.SkiPassVm.SkiPassDetailVm
+
+@{
+    ViewData["Title"] = "SkiPass Details";
+}
+
+<link rel="stylesheet" href="/css/zobaczymy.css" asp-append-version="true" />
+
+<div class="d-flex justify-content-center align-items-center py-5 px-3">
+    <div class="shadow bg-white rounded-4 p-4 w-100" style="max-width: 1400px;">
+        <div class="row g-4 align-items-center">
+            <!-- Obrazek -->
+            <div class="col-lg-6">
+                @if (Model.Image != null && Model.Image.Length > 0)
+                {
+                    <img src="data:image/png;base64,@Convert.ToBase64String(Model.Image)"
+                         alt="SkiPass Image"
+                         class="img-fluid rounded w-100"
+                         style="max-height: 450px; object-fit: cover;" />
+                }
+                else
+                {
+                    <div class="bg-secondary text-white d-flex justify-content-center align-items-center rounded"
+                         style="height: 450px;">
+                        No Image Available
+                    </div>
+                }
+            </div>
+
+            <!-- Treść -->
+            <div class="col-lg-6">
+                <h1 class="fw-bold mb-3">@Model.MountainPlaceName Skipass</h1>
+                <p class="text-muted fs-5">@Model.Description</p>
+
+                <ul class="list-unstyled fs-5">
+                    <li><strong>Country:</strong> @Model.CountryName</li>
+                    <li><strong>Base Price:</strong> $@Model.BasePrice</li>
+                </ul>
+
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+                        <button type="submit" class="btn btn-danger px-4 py-2">Delete</button>
+                    </form>
+                    <a href="@Url.Action("Index", "SkiPass")" class="btn btn-secondary px-4 py-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GuideMountainsMVC.Domain.Model.Country>
+
+@{
+    ViewData["Title"] = "Select a Country";
+}
+
+<link rel="stylesheet" href="/css/zobaczymy.css" asp-append-version="true" />
+
+<div class="container py-5">
+    <h1 class="text-center mb-5 display-4">Select a Country</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5">
+        @foreach (var country in Model)
+        {
+            string imagePath = country.Name switch
+            {
+                "Italy" => Url.Content("~/Images/1.jpg"),
+                "Austria" => Url.Content("~/Images/888.jpeg"),
+                "Switzerland" => Url.Content("~/Images/999.jpeg"),
+                _ => Url.Content("~/Images/no-image.jpg")
+            };
+
+            <div class="col">
+                <div class="card h-100 shadow-lg border-0" style="min-height: 585px;">
+                    <img src="@imagePath"
+                         alt="@country.Name"
+                         class="card-img-top"
+                         style="height: 390px; object-fit: cover;" />
+
+                    <div class="card-body text-center">
+                        <h4 class="card-title fs-2">@country.Name</h4>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <a href="@Url.Action("MountainPlacesForCountry", "Reservation", new { countryId = country.Id })"
+                           class="btn w-75 py-2 fs-4">
+                            View Reservation Options
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
