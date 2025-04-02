@@ -258,7 +258,6 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("EquipmentName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EquipmentQuantity")
@@ -287,7 +286,6 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SkiPassTypeName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

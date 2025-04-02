@@ -7,10 +7,10 @@ using GuideMountainsMVC.Domain.Model;
 
 namespace GuideMountainsMVC.Domain.Interfaces
 {
-    public interface IAccommodationReservationRepository
-    {
-        void AddReservation(AccommodationReservation reservation);
-        bool IsAccommodationAvailable(int accommodationId, DateTime start, DateTime end);
-        List<AccommodationReservation> GetReservationsForAccommodation(int accommodationId);
-    }
+    //public interface IAccommodationReservationRepository
+    //{
+    //    void AddReservation(AccommodationReservation reservation);
+    //    bool IsAccommodationAvailable(int accommodationId, DateTime start, DateTime end);
+    //    List<AccommodationReservation> GetReservationsForAccommodation(int accommodationId);
+    //}
 }

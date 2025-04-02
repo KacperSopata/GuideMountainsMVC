@@ -17,7 +17,7 @@ namespace GuideMountainsMVC.Domain.Model
         public SkiPass SkiPass { get; set; }
         public int? SkiPassDays { get; set; }
         public int? SkiPassQuantity { get; set; }
-        public string SkiPassTypeName { get; set; }
+        public string? SkiPassTypeName { get; set; }
 
         public int? AccommodationId { get; set; }
         public Accommodation Accommodation { get; set; }
@@ -30,7 +30,7 @@ namespace GuideMountainsMVC.Domain.Model
         public EquipmentRental EquipmentRental { get; set; }
         public int? EquipmentQuantity { get; set; }
         public int? EquipmentDays { get; set; }
-        public string EquipmentName { get; set; }
+        public string? EquipmentName { get; set; }
         public string ItemType { get; set; }
 
         public double Price { get; set; }

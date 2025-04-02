@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GuideMountainsMVC.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+894853201840d277393d8298deb33477bf019d86")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9771a0a5063634450bed0f815d003dd951d88917")]
 [assembly: System.Reflection.AssemblyProductAttribute("GuideMountainsMVC.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GuideMountainsMVC.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
