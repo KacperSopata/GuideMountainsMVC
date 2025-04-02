@@ -28,7 +28,6 @@ namespace GuideMountainsMVC.Application.Services
                 SkiPassQuantity = itemVm.SkiPassQuantity,
                 SkiPassDays = itemVm.SkiPassDays,
                 SkiPassTypeName = itemVm.SkiPassTypeName,
-                SkiPass = null, // opcjonalnie
 
                 AccommodationId = itemVm.AccommodationId,
                 AccommodationGuests = itemVm.AccommodationGuests,
@@ -36,19 +35,27 @@ namespace GuideMountainsMVC.Application.Services
                 AccommodationStartDate = itemVm.AccommodationStartDate,
                 AccommodationEndDate = itemVm.AccommodationEndDate,
 
-
                 EquipmentRentalId = itemVm.EquipmentRentalId,
                 EquipmentQuantity = itemVm.EquipmentQuantity,
                 EquipmentDays = itemVm.EquipmentDays,
                 EquipmentName = itemVm.EquipmentName,
-                //EquipmentRental = null,
-                // ← WAŻNE
 
                 Price = itemVm.Price
             };
 
+            // 👇 Ustawiamy typ pozycji
+            if (item.SkiPassId != null)
+                item.ItemType = "SkiPass";
+            else if (item.AccommodationId != null)
+                item.ItemType = "Accommodation";
+            else if (item.EquipmentRentalId != null)
+                item.ItemType = "Equipment";
+            else
+                item.ItemType = "Other";
+
             _reservationRepository.AddItemToReservation(reservationId, item);
         }
+
 
         public void ConfirmReservation(int reservationId)
         {

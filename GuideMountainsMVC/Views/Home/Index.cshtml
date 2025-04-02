@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/custom.css" asp-append-version="true">
     <link rel="stylesheet" href="/css/chat.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-
 </head>
 
 <body>
@@ -54,22 +53,7 @@
         </div>
         <button class="slider-button next">&gt;</button>
     </div>
-    <div id="chat-toggle">
-        <i class="bi bi-chat-dots-fill"></i>
-    </div>
 
-    <!-- Floating Chat Box -->
-    <div id="floating-chat" class="hidden">
-        <div class="chat-header">
-            AI Chat
-            <button id="chat-close"><i class="bi bi-x-lg"></i></button>
-        </div>
-        <div class="chat-messages" id="chat-log"></div>
-        <div class="chat-input-wrapper">
-            <input type="text" id="chat-input" placeholder="Type your message..." />
-            <button id="send-btn"><i class="bi bi-send-fill"></i></button>
-        </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -128,53 +112,7 @@
                     goToMountainPlace(country);
                 });
             });
-
-            // -------------------------
-            // CHATBOT – Floating Chat
-            // -------------------------
-            function appendMessage(sender, message) {
-                const bubble = $('<div class="message ' + sender + '"></div>').text(message);
-                $("#chat-log").append(bubble);
-                $("#chat-log").scrollTop($("#chat-log")[0].scrollHeight);
-            }
-
-            $("#send-btn").click(function () {
-                const msg = $("#chat-input").val();
-                if ($.trim(msg) === "") return;
-                appendMessage("user", msg);
-                $("#chat-input").val("");
-
-                $.ajax({
-                    url: '/Chat/SendMessage',
-                    type: 'POST',
-                    data: { userPrompt: msg },
-                    success: function (res) {
-                        appendMessage("bot", res.answer);
-                    },
-                    error: function () {
-                        appendMessage("bot", "⚠️ Server error.");
-                    }
-                });
-            });
-
-            $("#chat-input").keypress(function (e) {
-                if (e.which === 13) {
-                    $("#send-btn").click();
-                    return false;
-                }
-            });
-
-            $("#chat-toggle").click(function () {
-                $("#floating-chat").removeClass("hidden");
-                $(this).hide();
-            });
-
-            $("#chat-close").click(function () {
-                $("#floating-chat").addClass("hidden");
-                $("#chat-toggle").show();
-            });
         });
     </script>
-
 </body>
 </html>

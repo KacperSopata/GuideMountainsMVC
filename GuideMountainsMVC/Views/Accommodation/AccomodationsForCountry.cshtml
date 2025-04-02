@@ -1,0 +1,33 @@
+﻿@model GuideMountainsMVC.Application.ViewModel.AccommodationVm.ListAccommodationVm
+
+<h2 class="header-title">Accommodations in @ViewBag.CountryName</h2>
+<head>
+    <link rel="stylesheet" href="/css/MountainPlace.css" asp-append-version="true" />
+</head>
+<div class="cards">
+    @foreach (var place in Model.Accommodations)
+    {
+        <div class="card">
+            <!-- Sekcja bez obrazka, tylko placeholder -->
+            <div class="empty-image-placeholder">
+                No Image Available
+            </div>
+            <div class="card-content">
+                <div class="title">
+                    <h4>@place.Name</h4>
+                </div>
+                <div class="description">
+                    <h4>Description:</h4>
+                    <p>@place.Description</p>
+                </div>
+            </div>
+            <div class="actions">
+                <a href="@Url.Action("AccommodationDetails", "Accommodation", new { id = place.Id })" class="btn btn-info">View Details</a>
+            </div>
+        </div>
+    }
+</div>
+
+<a href="@Url.Action("AddAccommodation", "Accommodation", new { countryId = ViewBag.CountryId })" class="btn btn-success">
+    Add Accommodation
+</a>

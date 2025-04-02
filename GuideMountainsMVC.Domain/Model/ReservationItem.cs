@@ -31,6 +31,7 @@ namespace GuideMountainsMVC.Domain.Model
         public int? EquipmentQuantity { get; set; }
         public int? EquipmentDays { get; set; }
         public string EquipmentName { get; set; }
+        public string ItemType { get; set; }
 
         public double Price { get; set; }
     }

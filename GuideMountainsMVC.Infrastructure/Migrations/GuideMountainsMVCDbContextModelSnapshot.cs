@@ -267,6 +267,10 @@ namespace GuideMountainsMVC.Infrastructure.Migrations
                     b.Property<int?>("EquipmentRentalId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ItemType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 

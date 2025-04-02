@@ -2961,8 +2961,8 @@
       ]
     },
     {
-      "Route": "css/chat.css",
-      "AssetFile": "css/chat.css",
+      "Route": "css/DetailsMountainPlace.css",
+      "AssetFile": "css/DetailsMountainPlace.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2975,7 +2975,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3269"
+          "Value": "4079"
         },
         {
           "Name": "Content-Type",
@@ -2983,23 +2983,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"In3z97+gRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA=\""
+          "Value": "\"18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 09:45:37 GMT"
+          "Value": "Fri, 14 Mar 2025 11:21:58 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-In3z97+gRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA="
+          "Value": "sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="
         }
       ]
     },
     {
-      "Route": "css/chat.irw87dzxnj.css",
-      "AssetFile": "css/chat.css",
+      "Route": "css/DetailsMountainPlace.ztu78s4sh2.css",
+      "AssetFile": "css/DetailsMountainPlace.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3012,7 +3012,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3269"
+          "Value": "4079"
         },
         {
           "Name": "Content-Type",
@@ -3020,25 +3020,189 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"In3z97+gRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA=\""
+          "Value": "\"18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 09:45:37 GMT"
+          "Value": "Fri, 14 Mar 2025 11:21:58 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "irw87dzxnj"
+          "Value": "ztu78s4sh2"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-In3z97+gRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA="
+          "Value": "sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="
         },
         {
           "Name": "label",
-          "Value": "css/chat.css"
+          "Value": "css/DetailsMountainPlace.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/MountainPlace.css",
+      "AssetFile": "css/MountainPlace.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4079"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Mar 2025 11:21:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="
+        }
+      ]
+    },
+    {
+      "Route": "css/MountainPlace.ztu78s4sh2.css",
+      "AssetFile": "css/MountainPlace.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4079"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Mar 2025 11:21:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ztu78s4sh2"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="
+        },
+        {
+          "Name": "label",
+          "Value": "css/MountainPlace.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/MountainPlaceIndex.css",
+      "AssetFile": "css/MountainPlaceIndex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4850"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R6ZdZKvsCn+X/BXo3DvvdG2qFjfsIDGQc4tYfPs+xOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Mar 2025 11:21:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-R6ZdZKvsCn+X/BXo3DvvdG2qFjfsIDGQc4tYfPs+xOo="
+        }
+      ]
+    },
+    {
+      "Route": "css/MountainPlaceIndex.d3kg8ikv73.css",
+      "AssetFile": "css/MountainPlaceIndex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4850"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R6ZdZKvsCn+X/BXo3DvvdG2qFjfsIDGQc4tYfPs+xOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Mar 2025 11:21:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d3kg8ikv73"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-R6ZdZKvsCn+X/BXo3DvvdG2qFjfsIDGQc4tYfPs+xOo="
+        },
+        {
+          "Name": "label",
+          "Value": "css/MountainPlaceIndex.css"
         }
       ]
     },

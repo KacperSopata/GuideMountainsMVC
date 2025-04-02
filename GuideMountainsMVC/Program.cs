@@ -31,16 +31,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
 
-// Konfiguracja OpenAI
-var openApiKey = builder.Configuration["OpenAI:ApiKey"] ?? throw new Exception("Brak klucza Api");
-builder.Services.AddHttpClient("OpenAI");
-builder.Services.AddScoped<ChatBotService>(sp =>
-{
-    var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
-    var httpClient = httpClientFactory.CreateClient("OpenAI"); // poprawiona literówka
-    return new ChatBotService(httpClient, openApiKey);
-});
-
 // Konfiguracja pogody (OpenWeatherMap)
 builder.Services.AddHttpClient("Weather", client =>
 {

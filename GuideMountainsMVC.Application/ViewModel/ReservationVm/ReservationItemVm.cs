@@ -27,8 +27,8 @@ namespace GuideMountainsMVC.Application.ViewModel.ReservationVm
         public string EquipmentName { get; set; }
         public int? EquipmentQuantity { get; set; }
         public int? EquipmentDays { get; set; }
-
         public double Price { get; set; }
+        public string ItemType { get; set; }
         public void ConfigureMapping(Profile profile)
         {
             profile.CreateMap<ReservationItem, ReservationItemVm>()
@@ -45,6 +45,7 @@ namespace GuideMountainsMVC.Application.ViewModel.ReservationVm
                 .ForMember(dest => dest.SkiPassTypeName, opt => opt.MapFrom(src => src.SkiPass.SkiPassType.Name))
                 .ForMember(dest => dest.EquipmentQuantity, opt => opt.MapFrom(src => src.EquipmentQuantity))
                 .ForMember(dest => dest.EquipmentName, opt => opt.MapFrom(src => src.EquipmentRental.Name))
+                 .ForMember(dest => dest.ItemType, opt => opt.MapFrom(src => src.ItemType))
                 .ForMember(dest => dest.EquipmentDays, opt => opt.MapFrom(src => src.EquipmentDays));
         }
 

@@ -1,6 +1,8 @@
-wwwroot\css\chat.css
 wwwroot\css\custom.css
+wwwroot\css\DetailsMountainPlace.css
 wwwroot\css\login.css
+wwwroot\css\MountainPlace.css
+wwwroot\css\MountainPlaceIndex.css
 wwwroot\css\register.css
 wwwroot\css\site.css
 wwwroot\css\zobaczymy.css

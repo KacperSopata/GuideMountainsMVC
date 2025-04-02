@@ -37,8 +37,16 @@
       "PackagePath": "staticwebassets\\Images\\swiss.png"
     },
     {
-      "Id": "C:\\Users\\sandr\\OneDrive\\Pulpit\\GuideMountainsMVC\\GuideMountainsMVC\\wwwroot\\css\\chat.css",
-      "PackagePath": "staticwebassets\\css\\chat.css"
+      "Id": "C:\\Users\\sandr\\OneDrive\\Pulpit\\GuideMountainsMVC\\GuideMountainsMVC\\wwwroot\\css\\DetailsMountainPlace.css",
+      "PackagePath": "staticwebassets\\css\\DetailsMountainPlace.css"
+    },
+    {
+      "Id": "C:\\Users\\sandr\\OneDrive\\Pulpit\\GuideMountainsMVC\\GuideMountainsMVC\\wwwroot\\css\\MountainPlace.css",
+      "PackagePath": "staticwebassets\\css\\MountainPlace.css"
+    },
+    {
+      "Id": "C:\\Users\\sandr\\OneDrive\\Pulpit\\GuideMountainsMVC\\GuideMountainsMVC\\wwwroot\\css\\MountainPlaceIndex.css",
+      "PackagePath": "staticwebassets\\css\\MountainPlaceIndex.css"
     },
     {
       "Id": "C:\\Users\\sandr\\OneDrive\\Pulpit\\GuideMountainsMVC\\GuideMountainsMVC\\wwwroot\\css\\custom.css",

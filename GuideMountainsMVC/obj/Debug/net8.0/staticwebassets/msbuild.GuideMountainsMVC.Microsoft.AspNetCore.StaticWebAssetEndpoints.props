@@ -1,17 +1,5 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/chat.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chat.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-In3z97\u002BgRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3269"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022In3z97\u002BgRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 09:45:37 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/chat.irw87dzxnj.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chat.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"irw87dzxnj"},{"Name":"integrity","Value":"sha256-In3z97\u002BgRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA="},{"Name":"label","Value":"_content/GuideMountainsMVC/css/chat.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3269"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022In3z97\u002BgRCHHprmTrT9Lu7LT1fCI6AeHtSQvvGUwnPA=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 09:45:37 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/custom.85lw04tozs.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\custom.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -24,6 +12,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-DJO/PRd\u002BoZc8VmWiRWW8KqQhqPSio2meeLazz\u002Bdr1Z8="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5830"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022DJO/PRd\u002BoZc8VmWiRWW8KqQhqPSio2meeLazz\u002Bdr1Z8=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 09:33:07 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/DetailsMountainPlace.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\DetailsMountainPlace.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4079"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002218/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 11:21:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/DetailsMountainPlace.ztu78s4sh2.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\DetailsMountainPlace.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ztu78s4sh2"},{"Name":"integrity","Value":"sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="},{"Name":"label","Value":"_content/GuideMountainsMVC/css/DetailsMountainPlace.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4079"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002218/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 11:21:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/login.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\login.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -35,6 +35,30 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"e5f5pi59se"},{"Name":"integrity","Value":"sha256-8qzTsv/RaQsgpsmr07IVpt5JxTAOrC3TkMV8DW73WsA="},{"Name":"label","Value":"_content/GuideMountainsMVC/css/login.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2354"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228qzTsv/RaQsgpsmr07IVpt5JxTAOrC3TkMV8DW73WsA=\u0022"},{"Name":"Last-Modified","Value":"Tue, 25 Mar 2025 09:42:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/MountainPlace.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\MountainPlace.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4079"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002218/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 11:21:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/MountainPlace.ztu78s4sh2.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\MountainPlace.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ztu78s4sh2"},{"Name":"integrity","Value":"sha256-18/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A="},{"Name":"label","Value":"_content/GuideMountainsMVC/css/MountainPlace.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4079"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002218/An4f96xBRAApnJrMwsm7jStsWl8pjYyOJLfFmj9A=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 11:21:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/MountainPlaceIndex.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\MountainPlaceIndex.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-R6ZdZKvsCn\u002BX/BXo3DvvdG2qFjfsIDGQc4tYfPs\u002BxOo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4850"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022R6ZdZKvsCn\u002BX/BXo3DvvdG2qFjfsIDGQc4tYfPs\u002BxOo=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 11:21:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/MountainPlaceIndex.d3kg8ikv73.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\MountainPlaceIndex.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"d3kg8ikv73"},{"Name":"integrity","Value":"sha256-R6ZdZKvsCn\u002BX/BXo3DvvdG2qFjfsIDGQc4tYfPs\u002BxOo="},{"Name":"label","Value":"_content/GuideMountainsMVC/css/MountainPlaceIndex.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4850"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022R6ZdZKvsCn\u002BX/BXo3DvvdG2qFjfsIDGQc4tYfPs\u002BxOo=\u0022"},{"Name":"Last-Modified","Value":"Fri, 14 Mar 2025 11:21:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/GuideMountainsMVC/css/register.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\register.css'))</AssetFile>
