@@ -14,9 +14,7 @@ namespace GuideMountainsMVC.Domain.Model
         public string MountainPlaceName { get; set; }
         public string? UserId { get; set; }
         public ApplicationUser User { get; set; }
-
-
-        public ICollection<AccommodationReservation> AccommodationReservations { get; set; } = new List<AccommodationReservation>();
+        //public ICollection<AccommodationReservation> AccommodationReservations { get; set; } = new List<AccommodationReservation>();
         public List<ReservationItem> ReservationItems { get; set; } = new List<ReservationItem>();
     }
 }

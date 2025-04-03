@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GuideMountainsMVC.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9771a0a5063634450bed0f815d003dd951d88917")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b63b7db06ecd3320e43066f71e1d2ab01e350b15")]
 [assembly: System.Reflection.AssemblyProductAttribute("GuideMountainsMVC.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GuideMountainsMVC.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
